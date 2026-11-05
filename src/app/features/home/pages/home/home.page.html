@@ -1,0 +1,81 @@
+<div class="flex h-screen overflow-hidden bg-page lg:flex">
+    @if (isMobileSidebarOpen) {
+    <div class="fixed inset-0 z-30 bg-gray-600 bg-opacity-75 lg:hidden" (click)="closeMobileSidebar()"></div>
+    }
+
+    <aside
+        class="fixed inset-y-0 left-0 z-40 w-64 transform flex-col bg-aside border-r border-gray-200 transition-transform duration-200 lg:static lg:translate-x-0 lg:flex"
+        [class.translate-x-0]="isMobileSidebarOpen" [class.-translate-x-full]="!isMobileSidebarOpen">
+        <div class="flex flex-col items-center justify-between p-2">
+            <h1 class="text-xl font-bold text-gray-900 text-center">Base Template</h1>
+            <button type="button" class="lg:hidden rounded-md p-1 text-gray-500 hover:bg-gray-100"
+                (click)="closeMobileSidebar()" aria-label="Close menu">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="flex gap-1 px-4 items-center">
+            <button type="button" (click)="toggleProfile()" [attr.aria-expanded]="isProfileOpen" aria-haspopup="true"
+                class="flex items-center rounded-full p-1.5 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <span
+                    class="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 text-sm font-semibold text-white">
+                    {{ 'U' }}
+                </span>
+            </button>
+            <p class="text-sm font-medium text-gray-700">User name</p>
+        </div>
+        <nav class="flex-1 space-y-1 px-3 py-4">
+            <a routerLink="/" routerLinkActive="bg-indigo-600 text-white" [routerLinkActiveOptions]="{ exact: true }"
+                (click)="closeMobileSidebar()"
+                class="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-indigo-700">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                        clip-rule="evenodd" />
+                </svg>
+                Home
+            </a>
+        </nav>
+
+        <div class="p-3 flex justify-between gap-2">
+            <h5 class="text-sm font-medium text-gray-700 flex items-center">v1.0.0</h5>
+
+            <button type="button" (click)="onLogout()" title="Logout"
+                class="flex items-center cursor-pointer px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50">
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z"
+                        clip-rule="evenodd" />
+                    <path fill-rule="evenodd"
+                        d="M19 10a.75.75 0 00-.75-.75H8.704l1.048-.943a.75.75 0 10-1.004-1.114l-2.5 2.25a.75.75 0 000 1.114l2.5 2.25a.75.75 0 101.004-1.114l-1.048-.943h9.546A.75.75 0 0019 10z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+    </aside>
+
+    <div class="flex min-w-0 flex-1 flex-col">
+        <header class="sticky top-0 z-20 bg-white shadow-sm flex lg:hidden">
+            <div class="flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
+                <div>
+                    <button type="button" (click)="toggleMobileSidebar()" [attr.aria-expanded]="isMobileSidebarOpen"
+                        aria-controls="sidebar"
+                        class="inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open menu</span>
+                        <svg class="block h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="relative flex-1 overflow-hidden">
+
+        </main>
+    </div>
+</div>
